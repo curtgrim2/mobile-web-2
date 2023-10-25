@@ -4,7 +4,7 @@
   <title> NMP2 </title>
 <style>
 *{
-
+user-select:none;
 }
 body{
   background-color: lavender;
@@ -157,21 +157,24 @@ var checklimit = maincontent.innerHTML;
 //checklimit = checklimit.replace(/\s/g,""); //removes whitespace
 console.log(checklimit +", "+ checklimit.length);
 
-//var index=1;
+
 op1.onclick = function(){openup(op1,op2,op3)};
 //document.getElementById("op1").onclick = function(){openup(op1,op2,op3)};
 op2.onclick = function(){openup(op2,op1,op3)};
 //document.getElementById("op2").onclick = function(){openup(op2,op1,op3, index=1)};
 document.getElementById("op3").onclick = function(){openup(op3,op1,op2)};
 
+function disableOthers(){
 
+}
 
 function openup(selected,other1,other2){
-  console.log(selected);
-
+  //console.log(selected);
+  other1.onclick = null;
   other1.style.opacity = '0';
   other1.style.transition = 'opacity  1s';
 
+  other2.onclick = null;
   other2.style.opacity ='0';
   other2.style.transition = 'opacity 1s';
 
@@ -191,10 +194,6 @@ hidden AND THEN we can have display=none so that selected link doesn't move up b
   other1.style.border = 'hidden';
   other2.style.border = 'hidden';
 
-  /*selected.style.position ='fixed';
-  selected.style.bottom = '0';*/
-  //selected.style.transform = 'translateY(400px)';
-  //selected.style.transition ='transform 2s';
 
   const laststep = setTimeout(finalmove,500,selected);
 }
