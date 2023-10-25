@@ -1,0 +1,250 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title> NMP2 </title>
+<style>
+*{
+
+}
+body{
+  background-color: lavender;
+}
+a{
+  display:block; /*This keeps links from be weirdly formatted */
+  text-decoration: none;
+  color:black;
+  padding:2%;
+  cursor:pointer;
+}
+#overall{
+  margin:0 auto 0 auto;
+  height:50%;
+  width:85%;
+  position:relative;
+  top:20%;
+  font-size:30px;
+  font-family:impact;
+}
+
+#maincontent{
+/*border:black 5px solid;
+background-color:white;
+margin:0 auto 0 auto;
+padding:0 2% 2% 2%;
+height:100%;
+width:90%;
+font-size: 100%;*/ /*This wasn't allowing the text to fit BECAUSE of the set height*/
+border:5px grey solid;
+background-color: white;
+margin: 0 auto 0 auto;
+padding: 1% 2%;
+font-size: 100%;
+display:none;
+width:90%;
+/*min-height:50%;*/
+
+
+}
+.top-left{
+  border-top:black 3px solid;
+  border-left:black 3px solid;
+}
+#homepage:hover{
+  text-decoration:underline;
+  background-image:linear-gradient(to top, lavender, white);
+}
+
+.right-bottom{
+  border-right:white 3px solid;
+  border-bottom:white 3px solid;
+  text-align:right;
+  /*margin-bottom:2%;*/
+  /*margin:0;*/
+}
+
+.right-bottom:hover a{
+/*  background-color: rgba(176,176,176,.3)*/
+ /*background-image: linear-gradient(to bottom , lavender, rgba(230,230,230,.8));*/
+ background-image: linear-gradient(to right , lavender, black);
+ color:white;
+}
+
+.right-bottom2{
+  border-right:white 3px solid;
+  border-bottom:white 3px solid;
+  text-align:right;
+  /*margin-bottom:2%;*/
+  /*margin:0;*/
+}
+
+.right-bottom2:hover {
+  background-image: linear-gradient(to right , lavender, lavender);
+  color:black;
+}
+</style>
+</head>
+<body>
+<div id="overall">
+<div id="homepage" class="top-left">
+
+<a id ="homelink" style="display:block;padding:10;" href="">HOMEPAGE</a>
+</div>
+
+
+<div id="maincontent">
+BOOM!
+
+In this area, is where the selected content should be display. That can be done either through Python rendering template
+arguments or AngularJS (my recent uses).
+
+I'll display some sample text below to carry over the point.
+  <!--Default
+
+  Text(I want there to be more height for the main content)
+
+Default Text(I want there to be more height for the main content)
+
+Yes I know the Earth revolves around the Sun, just not in this universe.
+Normal physics dont apply here!
+
+Yes I know the Earth revolves around the Sun, just not in this universe.
+Normal physics dont apply here!
+Yes I know the Earth revolves around the Sun, just not in this universe.
+Normal physics dont apply here!
+Yes I know the Earth revolves around the Sun, just not in this universe.
+Normal physics dont apply here!
+
+Normal physics dont apply here!
+Yes I know the Earth revolves around the Sun, just not in this universe.
+Normal physics dont apply here!
+Yes I know the Earth revolves around the Sun, just not in this universe.
+Normal physics dont apply here!
+
+Default Text(I want there to be more height for the main content)
+
+Yes I know the Earth revolves around the Sun, just not in this universe.
+Normal physics dont apply here!
+
+
+Yes I know the Earth revolves around the Sun, just not in this universe.
+Normal physics dont apply here!
+Yes I know the Earth revolves around the Sun, just not in this universe.
+Normal physics dont apply here!
+Yes I know the Earth revolves around the Sun, just not in this universe.
+Normal physics dont apply here! -->
+
+</div>
+
+
+<div id ="op1" class="right-bottom"><a > Option 1 </a></div>
+<div id ="op2" class="right-bottom"><a > Op 2 </a></div>
+<div id="op3" class="right-bottom"><a > 3rd oppy </a></div>
+</div>
+</body>
+
+
+
+
+<script>
+//var overall = document.getElementById("overall");
+var header = document.getElementById("homepage");
+var maincontent = document.getElementById("maincontent");
+var op1 = document.getElementById("op1");
+var op2 = document.getElementById("op2");
+var op3 = document.getElementById("op3");
+
+var checklimit = maincontent.innerHTML;
+//checklimit = checklimit.replace(/\s/g,""); //removes whitespace
+console.log(checklimit +", "+ checklimit.length);
+
+//var index=1;
+op1.onclick = function(){openup(op1,op2,op3)};
+//document.getElementById("op1").onclick = function(){openup(op1,op2,op3)};
+op2.onclick = function(){openup(op2,op1,op3)};
+//document.getElementById("op2").onclick = function(){openup(op2,op1,op3, index=1)};
+document.getElementById("op3").onclick = function(){openup(op3,op1,op2)};
+
+
+
+function openup(selected,other1,other2){
+  console.log(selected);
+
+  other1.style.opacity = '0';
+  other1.style.transition = 'opacity  1s';
+
+  other2.style.opacity ='0';
+  other2.style.transition = 'opacity 1s';
+
+const go = setTimeout(dissapear,1000,selected,other1,other2);// Commence next animation after one second
+}
+
+function dissapear(selected,other1,other2){
+
+  /*
+  */
+/*Might have to have javascript animation come first with visibility
+hidden AND THEN we can have display=none so that selected link doesn't move up before animation*/
+
+  other1.style.display = 'none';
+  other2.style.display = 'none';
+
+  other1.style.border = 'hidden';
+  other2.style.border = 'hidden';
+
+  /*selected.style.position ='fixed';
+  selected.style.bottom = '0';*/
+  //selected.style.transform = 'translateY(400px)';
+  //selected.style.transition ='transform 2s';
+
+  const laststep = setTimeout(finalmove,500,selected);
+}
+
+function finalmove(selected){
+   //selected.style.position ='relative';
+   selected.style.position ='relative';
+  selected.style.bottom = '0';
+  selected.style.marginTop = '0%';
+  selected.style.width = '98%';
+  selected.style.display='block';
+
+  header.style.position = 'relative';
+  //header.style.position = 'fixed';
+  header.style.top ='0';
+  header.style.width = '98%';
+
+  overall.style.margin = '0';
+  overall.style.width = '99%';
+
+  maincontent.style.display = "block";
+  overall.style.top ='0';
+
+
+  selected.onmouseover = function(){nomorehover(selected)}
+
+
+  if(checklimit.length > 6000){ //1670 for mobile view
+//Create a seperate page for the extra content
+  }
+
+  function nomorehover(selected){
+    console.log("Check!");
+    //selected.style.backgroundImage = 'linear-gradient(to right , lavender, lavender)';
+    var boop = document.getElementsByClassName("right-bottom");
+
+    //selected.childNodes[index].style.backgroundImage = 'linear-gradient(to right , lavender, lavender)';
+    selected.className = "right-bottom2";
+
+  }
+
+header.onmouseover = function(){headerhighlight()};
+
+}
+
+function headerhighlight(){
+  //console.log("ckecl");
+
+ //document.getElementById("homelink").style.backgroundImage = "linear-gradient(to top, lavender,white)";
+
+}
+</script>
+</html>
